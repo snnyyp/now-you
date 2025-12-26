@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+</head>
+<body>
+
+<audio id="player" controls preload="auto"></audio>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get('file');
+
+  const player = document.getElementById('player');
+
+  if (file) {
+    player.src = file;
+  } else {
+  }
+</script>
+
+</body>
+</html>
