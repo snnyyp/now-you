@@ -2,21 +2,31 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>Music Player</title>
+  <title>Media Player</title>
 </head>
 <body>
 
-<audio id="player" controls preload="auto"></audio>
+<div id="player-container"></div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
   const file = params.get('file');
-
-  const player = document.getElementById('player');
+  const container = document.getElementById('player-container');
 
   if (file) {
+    let player;
+
+    if (file.toLowerCase().endsWith('.mp4')) {
+      player = document.createElement('video');
+    } else {
+      player = document.createElement('audio');
+    }
+
+    player.controls = true;
+    player.preload = 'auto';
     player.src = file;
-  } else {
+
+    container.appendChild(player);
   }
 </script>
 
